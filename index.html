@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css"/>
+        <title>The most easy HTML calculator</title>
+    </head>
+    <body>
+
+        <header class="text-gray-600 body-font">
+            <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+              <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-3 text-xl">Simple Calculator</span>
+              </a>
+              <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-gray-900">Simple Calculator</a>
+                <a class="mr-5 hover:text-gray-900">Advanced Calculator</a>
+              </nav>
+            </div>
+          </header>
+
+        <style>
+        /* CHECKBOX dark-mode SWITCH */
+        /* @apply rules for documentation, these do not work as inline style */
+        .dark-mode-checkbox:checked {
+        /*@apply: right-0 border-green-400;*/
+        right: 0;
+        border-color: #68D391;
+        }
+        .dark-mode-checkbox:checked + .dark-mode-label {
+        /*@apply: bg-green-400;*/
+        background-color: #68D391;
+        }
+        </style>
+
+        <div id="calculator-container"  class="grid gap-1 grid-cols-4 max-w-xs mx-auto p-1 bg-gray-200">
+        <div class="col-span-4 p-1 text-right">
+        <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+        <input type="checkbox" name="dark-mode" id="dark-mode" class="dark-mode-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+        <label for="dark-mode" class="dark-mode-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+        </div>
+        <label id="dark-mode-label" type="checkbox" 
+        for="dark-mode" class="text-xs text-gray-700">Dark mode</label>
+        </div>
+        <div id="border-screen" class="col-span-4 
+        p-1 h-30 border-8 bg-white border-gray-200">
+            <div class="screen-number flex flex-row-reverse">
+                <div id="last-operation-screen" 
+                class="screen-number text-xl align-top">&nbsp;</div>
+            </div>
+            <input type="text" id="text-number" maxlength="10" readonly 
+            class="screen-number w-full h-20 text-4xl text-right 
+            border-0 border-gray-700 py-2 px-3 text-grey-darkest">
+        </div>
+        <div class="text-center p-1">
+        <button id="reset-button" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded w-full">
+        AC
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button data-operation="+-" class="button-operation bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+        +/-
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button data-operation="%" class="button-operation bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+        %
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="operation-division" data-operation="/" class="button-operation bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded w-full">
+        /
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="number-seven" data-number="7" class="button-number bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+        7
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="number-eight" data-number="8" class="button-number bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+        8
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="number-nine" data-number="9" class="button-number bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+        9
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="operation-multiplication" data-operation="*" class="button-operation bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded w-full">
+        *
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="number-four" data-number="4" class="button-number bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+        4
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="number-five" data-number="5" class="button-number bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+        5
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="number-six" data-number="6" class="button-number bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+        6
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="operation-substract" data-operation="-" class="button-operation bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded w-full">
+        -
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="number-one" data-number="1" class="button-number bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+        1
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="number-two" data-number="2" class="button-number bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+        2
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="number-three" data-number="3" class="button-number bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+        3
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="operation-plus" data-operation="+" class="button-operation bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded w-full">
+        +
+        </button>
+        </div>
+        <div class="col-span-2 p-1">
+        <button id="number-zero" data-number="0" class="button-number bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+        0
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="number-period" data-number="." class="button-number bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded w-full">
+        .
+        </button>
+        </div>
+        <div class="text-center p-1">
+        <button id="button-equal" data-operation="=" class="button-operation bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded w-full">
+        =
+        </button>
+        </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

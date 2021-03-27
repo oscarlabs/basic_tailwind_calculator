@@ -1,0 +1,16 @@
+{
+  "name": "easy-calculator",
+  "version": "1",
+  "description": "The most easy HTML calculator",
+  "main": "index.html",
+  "repository": "https://github.com/oscarlabs/basic_tailwind_calculator.git",
+  "author": "oscarpls",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "live-server": "^1.2.1",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.4"
+  }
+}
